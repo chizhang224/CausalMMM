@@ -87,7 +87,7 @@ def edgeWiseACC(edgePreds, edgeTruths, binary=True):
     if binary:
         edgePreds = (edgePreds >= 1).long()
     rightStat = edgePreds.float().data.eq(edgeTruths.float().data.view_as(edgePreds)).cpu().sum()
-    return np.float(rightStat) / (edgeTruths.size(0) * edgeTruths.size(1))
+    return float(rightStat) / (edgeTruths.size(0) * edgeTruths.size(1))
 
 def edgeWiseAUROC(edgePreds, edgeTruths):  
     aurocScore = 0.0
